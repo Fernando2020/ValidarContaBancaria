@@ -4,6 +4,6 @@ namespace ValidarContaBancaria.Service.Interfaces
 {
     public interface ICitibankService
     {
-        public bool ValidarContaCorrente(ValidarContaCorrenteComAgenciaDto dto);
+        public bool ValidarContaCorrente(ValidarContaCorrenteDto dto);
     }
 }

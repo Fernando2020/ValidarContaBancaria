@@ -16,17 +16,17 @@ namespace ValidarContaBancaria.Api.Controllers
         }
 
         [HttpPost]
-        [Route("Agencia")]
-        public IActionResult ValidarAgencia(ValidarAgenciaDto dto)
-        {
-            return Ok(_bancoDoBrasilService.ValidarAgencia(dto));
-        }
-
-        [HttpPost]
-        [Route("ContaCorrente")]
+        [Route("ValidarDVContaCorrente")]
         public IActionResult ValidarContaCorrente(ValidarContaCorrenteDto dto)
         {
-            return Ok(_bancoDoBrasilService.ValidarContaCorrente(dto));
+            try
+            {
+                return Ok(new RespostaDto<bool>(_bancoDoBrasilService.ValidarContaCorrente(dto)));
+            }
+            catch
+            {
+                return BadRequest(new ErroDto(true, "Ops, números inválidos."));
+            }
         }
     }
 }

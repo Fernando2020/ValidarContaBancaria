@@ -8,31 +8,6 @@ namespace ValidarContaBancaria.Service.Services
 {
     public class BradescoService : IBradescoService
     {
-        public bool ValidarAgencia(ValidarAgenciaDto dto)
-        {
-            var produtos = new List<int>();
-            var pesos = new List<int> { 5, 4, 3, 2 };
-            var dv = dto.Agencia.Last().ToString();
-            var agencia = dto.Agencia.Replace("-", string.Empty);
-            agencia = agencia.Substring(0, agencia.Length - 1).PadLeft(4, '0');
-
-            for (int i = 0; i < pesos.Count; i++)
-            {
-                produtos.Add(pesos[i] * Convert.ToInt32(agencia[i].ToString()));
-            }
-
-            var soma = produtos.Sum();
-            var modulo = soma % 11;
-
-            var resto = modulo;
-
-            var resultado = 11 - resto;
-
-            if (resultado == 10) return dv == "P";
-            if (resultado == 11) return dv == "0";
-            return dv == resultado.ToString();
-        }
-
         public bool ValidarContaCorrente(ValidarContaCorrenteDto dto)
         {
             var produtos = new List<int>();
