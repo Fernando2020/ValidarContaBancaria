@@ -8,7 +8,7 @@ namespace ValidarContaBancaria.Service.Services
 {
     public class CitibankService : ICitibankService
     {
-        public bool ValidarContaCorrente(ValidarContaCorrenteComAgenciaDto dto)
+        public bool ValidarContaCorrente(ValidarContaCorrenteDto dto)
         {
             var produtos = new List<int>();
             var pesos = new List<int> { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };

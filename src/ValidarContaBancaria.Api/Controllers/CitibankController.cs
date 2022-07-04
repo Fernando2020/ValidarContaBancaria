@@ -16,10 +16,17 @@ namespace ValidarContaBancaria.Api.Controllers
         }
 
         [HttpPost]
-        [Route("ContaCorrente")]
-        public IActionResult ValidarContaCorrente(ValidarContaCorrenteComAgenciaDto dto)
+        [Route("ValidarDVContaCorrente")]
+        public IActionResult ValidarContaCorrente(ValidarContaCorrenteDto dto)
         {
-            return Ok(_citibankService.ValidarContaCorrente(dto));
+            try
+            {
+                return Ok(new RespostaDto<bool>(_citibankService.ValidarContaCorrente(dto)));
+            }
+            catch
+            {
+                return BadRequest(new ErroDto(true, "Ops, números inválidos."));
+            }
         }
     }
 }
