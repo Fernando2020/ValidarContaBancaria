@@ -13,7 +13,8 @@ namespace ValidarContaBancaria.Service
                 .AddScoped<ISantanderService, SantanderService>()
                 .AddScoped<ICaixaService, CaixaService>()
                 .AddScoped<IBradescoService, BradescoService>()
-                .AddScoped<IItauService, ItauService>();
+                .AddScoped<IItauService, ItauService>()
+                .AddScoped<ICitibankService, CitibankService>();
 
             return service;
         }
