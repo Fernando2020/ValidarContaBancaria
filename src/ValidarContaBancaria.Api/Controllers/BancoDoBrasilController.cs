@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using ValidarContaBancaria.Core.Dtos;
 using ValidarContaBancaria.Service.Interfaces;
 
 namespace ValidarContaBancaria.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class BancoDoBrasilController : ControllerBase
     {
@@ -17,6 +18,8 @@ namespace ValidarContaBancaria.Api.Controllers
 
         [HttpPost]
         [Route("ValidarDVContaCorrente")]
+        [ProducesResponseType(typeof(RespostaDto<bool>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErroDto), StatusCodes.Status400BadRequest)]
         public IActionResult ValidarContaCorrente(ValidarContaCorrenteDto dto)
         {
             try
@@ -25,7 +28,7 @@ namespace ValidarContaBancaria.Api.Controllers
             }
             catch
             {
-                return BadRequest(new ErroDto(true, "Ops, números inválidos."));
+                return BadRequest(new ErroDto());
             }
         }
     }
