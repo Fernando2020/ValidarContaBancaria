@@ -8,4 +8,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ValidarContaBancaria.Core\ValidarContaBancaria.Core.csproj" />
+    <ProjectReference Include="..\ValidarContaBancaria.Service\ValidarContaBancaria.Service.csproj" />
+  </ItemGroup>
+
 </Project>
