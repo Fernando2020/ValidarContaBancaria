@@ -2,9 +2,15 @@
 {
     public class ErroDto
     {
-        public ErroDto(bool temErro, string erroMessage)
+        public ErroDto()
         {
-            TemErro = temErro;
+            TemErro = true;
+            ErroMessage = "Ops, números inválidos.";
+        }
+
+        public ErroDto(string erroMessage)
+        {
+            TemErro = true;
             ErroMessage = erroMessage;
         }
 
