@@ -26,7 +26,11 @@ namespace ValidarContaBancaria.Service.Services
             }
 
             var soma = produtos.Sum().ToString();
-            var resultado = 10 - Convert.ToInt32(soma.Last().ToString());
+            var unidadeTotal = Convert.ToInt32(soma.Last().ToString());
+
+            if (unidadeTotal == 0) return dv == "0";
+
+            var resultado = 10 - unidadeTotal;
 
             return dv == resultado.ToString();
         }

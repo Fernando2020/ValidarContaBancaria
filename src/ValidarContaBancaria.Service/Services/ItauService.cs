@@ -34,6 +34,9 @@ namespace ValidarContaBancaria.Service.Services
             var modulo = soma % 10;
 
             var resto = modulo;
+
+            if (resto == 0) return dv == "0";
+
             var digito = 10 - resto;
 
             return dv == digito.ToString();
