@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ValidarContaBancaria.Core.Dtos;
+using ValidarContaBancaria.Core.Utils;
 using ValidarContaBancaria.Service.Interfaces;
 
 namespace ValidarContaBancaria.Service.Services
@@ -14,7 +15,7 @@ namespace ValidarContaBancaria.Service.Services
             var pesos = new List<int> { 2, 1, 2, 1, 2, 1, 2, 1, 2 };
             var agencia = dto.Agencia.PadLeft(4, '0');
             var dv = dto.ContaCorrente.Last().ToString();
-            var conta = dto.ContaCorrente.Replace("-", string.Empty);
+            var conta = StringFunctions.RemoverCaracteresEspeciaisAgenciaOuConta(dto.ContaCorrente);
             conta = conta.Substring(0, conta.Length - 1).PadLeft(5, '0');
 
             conta = agencia + conta;
