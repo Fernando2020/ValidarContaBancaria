@@ -13,8 +13,8 @@ namespace ValidarContaBancaria.Service.Services
         {
             var produtos = new List<int>();
             var pesos = new List<int> { 9, 8, 7, 6, 5, 4, 3, 2 };
-            var dv = dto.ContaCorrente.Last().ToString();
             var conta = StringFunctions.RemoverCaracteresEspeciaisAgenciaOuConta(dto.ContaCorrente);
+            var dv = conta.Last().ToString();
             conta = conta.Substring(0, conta.Length - 1).PadLeft(8, '0');
 
             for (int i = 0; i < pesos.Count; i++)

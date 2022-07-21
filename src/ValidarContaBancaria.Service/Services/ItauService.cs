@@ -13,9 +13,10 @@ namespace ValidarContaBancaria.Service.Services
         {
             var produtos = new List<int>();
             var pesos = new List<int> { 2, 1, 2, 1, 2, 1, 2, 1, 2 };
-            var agencia = dto.Agencia.PadLeft(4, '0');
-            var dv = dto.ContaCorrente.Last().ToString();
+            var agencia = StringFunctions.RemoverCaracteresEspeciaisAgenciaOuConta(dto.Agencia);
+            agencia = agencia.PadLeft(4, '0');
             var conta = StringFunctions.RemoverCaracteresEspeciaisAgenciaOuConta(dto.ContaCorrente);
+            var dv = conta.Last().ToString();
             conta = conta.Substring(0, conta.Length - 1).PadLeft(5, '0');
 
             conta = agencia + conta;
